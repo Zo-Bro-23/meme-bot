@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const bot = new Discord.Client()
+const fs = require('fs')
 const ohGod = new Discord.MessageEmbed()
     .setImage('http://www.quickmeme.com/img/bb/bb7ce044d6a0418439e22fbe1e2efd5b263db02ead428742adf51a9c05488272.jpg')
 const lol = new Discord.MessageEmbed()
@@ -17,7 +18,8 @@ const msgs = ['Ya styubid...', 'What up boiii?', `Can't a bot sleep by himself?`
         console.log(bot.user.bot)
 
     })
-bot.login('ODAzMjAxMzc1OTM2NDQ2NDc0.YA6Vkg.fTQuXfy8NN0EHvI-i9aA-tC-K1E')
+    console.log()
+bot.login(JSON.parse(fs.readFileSync('cred.json')).bot)
 bot.on('message', message => {console.log(message.content)
     if(message.content == '!fu'){
 message.channel.send(msgs[Math.floor(Math.random() * (msgs.length))])
